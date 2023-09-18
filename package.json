@@ -23,5 +23,19 @@
     "stylelint": "^15.4.0",
     "stylelint-config-recommended": "^11.0.0",
     "stylelint-config-standard": "^32.0.0"
-  }
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanho-05/code-solutions-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanho-05/code-solutions-typescript/issues"
+  },
+  "homepage": "https://github.com/alanho-05/code-solutions-typescript#readme"
 }
