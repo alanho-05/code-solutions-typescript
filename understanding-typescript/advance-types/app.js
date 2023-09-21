@@ -39,3 +39,21 @@ function useVehicle(vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+const errorBag = {
+  email: 'Not a valid email!',
+  username: 'Must start with a capital character!',
+};
+console.log(errorBag);
+function add(a, b) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+const resultOfAdd = add('Alan', ' Ho');
+resultOfAdd.split(' ');
+// Nullish coalescing; provides fallback values
+const userInput = null;
+const storedData =
+  userInput !== null && userInput !== undefined ? userInput : 'Default';
+console.log(storedData);
