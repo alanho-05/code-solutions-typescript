@@ -6,6 +6,10 @@ class Department {
     this.name = n;
   }
 
+  static createEmployee(name) {
+    return { name };
+  }
+
   describe() {
     console.log(`Department (${this.id}): ${this.name}`);
   }
@@ -25,13 +29,64 @@ class ITDepartment extends Department {
     this.admins = admins;
   }
 }
-const accounting = new Department('1', 'Accounting');
+class AccountingDepartment extends Department {
+  get mostRecentReport() {
+    if (this.latestReport) {
+      return this.latestReport;
+    }
+    throw new Error('No report found.');
+  }
+
+  set mostRecentReport(value) {
+    if (!value) {
+      throw new Error('Please pass in a valid report!');
+    }
+    this.addReport(value);
+  }
+
+  constructor(id, reports) {
+    super(id, 'Accounting');
+    this.reports = reports;
+    this.latestReport = reports[0];
+  }
+
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountingDepartment('d2', []);
+    return this.instance;
+  }
+
+  addEmployee(employee) {
+    if (employee === 'Alan') {
+      return;
+    }
+    this.employees.push(employee);
+  }
+
+  addReport(text) {
+    this.reports.push(text);
+    this.latestReport = text;
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+const employee1 = Department.createEmployee('Yogi');
+const accounting = AccountingDepartment.getInstance();
 const hr = new Department('2', 'HR');
 const it = new ITDepartment('d1', ['Alan']);
 accounting.describe();
 accounting.addEmployee('Alan');
 accounting.addEmployee('Jane');
 accounting.printAllEmployeeInfo();
+accounting.addReport('Deadline in 3 days - Jane');
+accounting.mostRecentReport = 'Task completed - Jane';
+console.log(accounting.mostRecentReport);
+accounting.printReports();
 console.log(accounting);
 console.log(hr);
 console.log(it);
+console.log(employee1);
