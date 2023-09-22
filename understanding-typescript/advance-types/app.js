@@ -1,3 +1,4 @@
+/* eslint-disable no-void */
 'use strict';
 const employee = {
   name: 'Alan',
@@ -55,5 +56,5 @@ resultOfAdd.split(' ');
 // Nullish coalescing; provides fallback values
 const userInput = null;
 const storedData =
-  userInput !== null && userInput !== undefined ? userInput : 'Default';
+  userInput !== null && userInput !== void 0 ? userInput : 'Default';
 console.log(storedData);
