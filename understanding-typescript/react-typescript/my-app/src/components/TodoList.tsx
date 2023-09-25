@@ -1,3 +1,5 @@
+import './TodoList.css';
+
 type TodoListProps = {
   items: { id: string; text: string }[];
   onDeleteTodo: (id: string) => void;
